@@ -368,3 +368,44 @@ git push는 연동된 repository로 자동연동 ;)
 9d8a 어쩌구 commit 이후 버전 모두 삭제.
 
 > git reset --hard 9d8af6w6df6df68 
+
+
+
+//////////////////////////////총정리
+
+업로드할 폴더 초기화
+>git init
+
+업로드할 파일 전부. 추가
+>git add .
+
+잠시만여 test3폴더 커밋할랬는데 안할래요~
+>git restore --staged test3
+
+>커밋할 파일 전부. 커밋
+git commit .
+
+이미 add된 건 commit과 commit log를 한번에.
+>git commit -am "ver.1"
+
+잘못 적었으면 수정가능
+>git commit --amend
+
+저장할 repository 설정
+>git remote add origin https://github.com/water4360/alltest.git
+
+repository 확인
+>git remote -v
+
+잘못 입력했으면 삭제 가능
+>git remote remove origin
+
+기존 로컬파일 push
+>git push -u origin master
+
+*특정 폴더만 통째로 올리려면 외동은 아니어도 되지만
+git add해서 걔만 콕 찝어줘야 함.
+
+*아니면 폴더 내에서 .찍고 여기있는거 전부다~ 하던지.
+
+*폴더째로 올린다고 해도 파일없는 빈폴더는 안 따라간다ㅠㅠ
