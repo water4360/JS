@@ -1,0 +1,329 @@
+//230201
+
+git
+명령어 리스트
+
+pwd
+현재 디렉토리 경로 확인
+
+cd Desktop
+체인지디렉토리 바탕화면으로
+
+mkdir gitfth
+메이크디렉토리 gitfth폴더생성
+
+cd gitfth
+체인지디렉토리 gitfth폴더로
+
+ls -al
+현재 디렉토리 정보 확인
+
+//여기부터 본격시작//
+
+git init
+깃 초기화(repository 설정)
+
+ls -al
+한번 더 확인
+ㄴ .git 파일 생성된 것 확인 가능
+
+vim f1.txt
+vim에디터를 이용해서 f1.txt를 만들겠음
+
+vim에서 입력모드로 변경하려면 i (insert)
+작업끝났으면 esc
+저장하려면 :wq (wait & quit)
+
+ls -al
+ㄴf1.txt파일 생성 확인 가능
+
+cat f1.txt
+입력내용 확인 가능
+
+git status
+Untracked files에 f1.txt 확인 가능
+nothing added to commit 뜨면서 git add 추천
+
+git add f1.txt
+깃에 f1.txt 추가
+
+git status
+change 사항 확인.
+new file: f1.txt 보임.
+
+//여기는 사용자정보 입력단계//
+수정 안되나?ㅠㅠ
+
+git config --global user.name moon4rest
+사용자 이름 설정
+
+git config --global user.email water4360@naver.com
+사용자 이메일 설정
+
+git commit
+깃 커밋. 확실한 버전업로드인듯.
+vim에서 버전(커밋메세지)입력하라고 뜸. 1 입력해봄.
+★이때 커밋메세지 상세하게 잘 적어야겠음...
+그래야 나중에 어느 버전이 어떤 건지 안 헷갈리겠음.
+맞음. 미래에서 옴.ㅠ
+
+git log
+commit 파일해쉬코드(?)
+작성자, 작성자 이메일
+작성 날짜
+1 (vim에서 입력한 버전) 확인가능
+
+//깃 버전 추가//
+
+vim f1.txt
+vim으로 f1 내용을 source : 2로 고쳐봄
+
+git status
+(빨간색)modified f1.txt라고 뜸
+
+git add f1.txt
+다시 add해주면 source : 2로 고친것 추가됨
+
+git status
+다시 상태확인
+
+git status
+(초록색)modified f1.txt라고 뜸
+
+git commit
+vim 에디터에서  2로 해봄.
+
+
+
+
+git log
+그러면 버전 변경된 것 1, 2 둘 다 뜸.
+
+//f2.txt 만들어보기//
+cp f1.txt f2.txt
+copy 기존파일 생성할파일
+
+//와우 중복조심해야겠따 기존파일 있는데 냅다 덮어써버리네ㅠㅠ//
+
+git restore f2.txt
+카피한거 말고 기존 파일 내놔...
+
+rm f2.txt
+얘도 냅다 삭제됨
+
+ㅎㅎ이것저것 해보다가 버전 꼬였당~~
+지우는거 알려주겟지 머
+
+
+//commit 전 add 추가하는 이유!
+막 버전 복잡할때 커밋할 걸 선별할 수 있음.
+git status에서 커밋될거 안될거 구분가능
+커밋대기상태(stage area)
+약간 쇼핑몰 장바구니 느낌
+
+
+//stage - repository
+대기파일 - 커밋완료파일
+
+git log -p
+각 소스의 차이점을 친절히 알려주네
+버전별
+내용별 빠지고, 추가된 부분.
+
+git diff commitmsg2..commitmsg2
+딱 2개를 비교하고 싶을때.
+
+git diff
+직전 변경사항과의 차이점
+
+//과거로 돌아가기
+//드디어 커밋 취소를 배우는구나
+//근데 매우 어렵다고 함
+reset vs revert
+
+git reset commitmsg --hard
+그럼 해당 commitmsg로 돌아감. 쉬운게 --hard라서 쓰긴 했는데 위험한 방법임ㅎ
+나중에 soft 등 안전한 방법을 배울예정
+단, 리셋은 공유작업시 절대 엄금.
+내 로컬 컴에 남아있을 때만 가능.
+
+git revert
+약간 카피->수정본 재커밋 이런 느낌이네.
+
+최근 commit msg 수정하는 방법찾음!
+git commit --amend
+modified 3로 변경완료. 깔끔!
+
+
+커밋은 무조건, 무조건 로그 하나에 통합돼서 올라가니까
+작작 생성하도록 하자^^!
+
+git commit -a
+자동 add해서 커밋한다
+
+git commit -am "commit msg"
+자동 add해서 커밋메세지 바로 추가해버린다~
+
+
+//230206 - gitbash에서의 branch부터.
+//gitfth2로 새로 시작.
+
+git branch
+* master
+현재 브랜치명 확인
+ㄴ결과. 현재 master에 있음.
+
+git branch exp
+exp라는 브랜치 생성
+
+git branch
+  exp
+* master
+ㄴ결과. exp 브랜치 생성확인.
+
+git checkout exp
+exp 브랜치로 변경한다()
+Switched to branch 'exp'
+
+git branch
+* exp
+  master
+
+ls -al
+
+git log
+
+branch 확인
+
+vim f1.txt로 c 추가후 add & commit 하고나면
+
+git checkout master
+master 브랜치로 변경
+
+cat f1.txt
+f1.txt 내용 확인하면 a,b
+
+git checkout exp
+exp 브랜치로 변경
+
+git log 확인하면 version.3까지있고
+
+cat f1.txt
+f1.txt 내용 확인하면 a,b,c
+
+이 변경사항은 checkout여부에 따라 실제 폴더(gitfth2)에도 영향을 미침!
+
+//git 정보확인(tree)
+
+원본에도 변경사항(당연히 커밋까지)이 생긴 후 
+git log --branches --decorate --graph
+graph까지 쳤을때 효용이 드러남.
+
+git log --branches --decorate --graph --oneline
+간소화된 브랜치.
+
+
+git log master..exp
+master가 exp와 다른점을 보여주고
+
+git log exp..master
+exp가 master와 다른점을 보여줌.
+
+git log -p exp..master
+소스코드 상세까지.
+
+git diff master..exp
+
+
+//git 병합(merge)
+갈라져나간 branch exp의 버전들을 master로 옮기는 방법
+exp에서 master로 checkout한 다음 master에서 merge해야함.
+
+git merge exp
+vim에디터에 Merge branch 'exp'라는 커밋메세지 자동생성.
+저장후 나가면.
+exp 가지가 master에 붙게됨.
+그럼 merged branch인 master는 2개의 부모를 갖게 됨(원래 master/붙은 exp)
+
+이번엔 master의 이전버전인 version5를 exp에 합쳐보자
+
+git log로 확인하면, HEAD에 exp, master 같이 있음.
+내용이 완전히 똑같은 상태이기 때문.
+이제 지워보겠음.
+
+git branch -d exp
+exp branch 삭제.
+
+
+//git 수련 (?_?)from git-scm.com
+
+git checkout -b iss53
+issue53브랜치를 만들고 거기로 체크아웃한다.
+
+git branch iss53
+git checkout iss53
+ㄴ이 두 명령어를 위의 한 문장으로 가능!
+
+hotfix...
+fast-forward...
+
+iss53을 master에 merge하려고 하면,
+recursive strategy...
+merge commit을 생성함.
+
+
+
+//stash
+브랜치에서 작업하다보면 해당 브랜치가 끝나지 않았음에도
+다른 브랜치로 볼일보러 갈때. (이전 브랜치를 커밋해야 체크아웃할 수 있음;)
+이때 임시 숨겨두기처럼 해놓고 head로 갈 수 있는 기능!
+branch를 활발하게 사용할때 아주 유용한 기능.
+
+git stash --help
+stash 관련 도움말...을 html로 보여주네; 갑분크롬소환~
+
+
+git stash (save)
+save는 생략가능하지만 정확하게 기재해주는거 권장
+WIP(Working In Process)에 저장하고
+modified f1.txt (애매~한) 상태였던 파일을 숨겨줌.
+
+git stash apply
+그럼 다시 modified f1.txt 등장~
+
+git stash list
+stash{0}
+WIP에 저장된거 보여줍니다 version1확인가능~
+
+git reset --hard HEAD
+(주의)싹 지우고나면.
+
+git status
+해보면 nothing to commit, working tree clean 이라고 뜸
+
+git stash apply
+라고 하면 또다시 복원!
+WIP에 있는 애들은 명시적으로 삭제하지 않는 이상 항상 살아있다~
+
+또 하나를 stash에 저장하는 경우 위(0)이 최신.
+stash{0} 최신버전
+stash{1} 구버전
+
+git stash drop
+가장 최신 stash 삭제가능
+
+git stash list하면 "구"버전이 남아있는 것 확인 가능! 
+stash{0} 구버전
+
+git stash apply; git stash drop;
+최신 stash 적용하고 바로 삭제도 가능.
+그러고나면 이제 git stash list에 하나도 안남게됨.
+
+git pop (= 위에 apply & drap을 한번에.)
+
+git stash는 최소한 버전관리(add)가 되고 있는 파일만 저장가능!!
+
+
+//원리:branch
+cd ~/Desktop/git/gitfth4에서 시작하자!
+
