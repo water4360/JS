@@ -327,3 +327,21 @@ git stash는 최소한 버전관리(add)가 되고 있는 파일만 저장가능
 //원리:branch
 cd ~/Desktop/git/gitfth4에서 시작하자!
 
+
+
+//20230213
+앞의 부분 좀 건너뛰고 
+Github로 백업이 급해서 먼저ㅎㅎ
+
+
+원격 저장소 -> 로컬 저장소로 clone 해오기
+주소끝에 _. 잊지말기. 현재 디렉토리로 불러온다는 뜻.
+git clone https://github.com/water4360/study.git .
+
+
+데이터 내용 확인하기
+ls -al
+
+
+제대로 된 원격저장소에서 불러왔는지 연결 확인가능.
+git remote -v
