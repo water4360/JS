@@ -362,3 +362,9 @@ git push는 연동된 repository로 자동연동 ;)
 
 로컬에서 작업할 때는 pull로 최신데이터 먼저 받아오기!
 >git pull
+
+
+동시 편집된거 적용하느라 커밋/동기화 꼬인거 push전 commit 삭제로 클린하게 해결.
+9d8a 어쩌구 commit 이후 버전 모두 삭제.
+
+> git reset --hard 9d8af6w6df6df68 
