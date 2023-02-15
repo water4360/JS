@@ -1,0 +1,51 @@
+/* body, html {
+    height: 100%;
+} */
+
+.container {
+    border: 1px solid red;
+    padding-top:100px;
+    background: beige;
+    
+    /* view-height 입니다. 만약 안뜨면 body, html 값 지정해줘야함 */
+    height: 50vh;
+    
+    /* flex박스로 지정~ */
+    display: flex;
+    /* flex-wrap : 폭따라 변동 */
+    /* flex-flow: column nowrap; border처럼 한번에 지정도 가능*/
+    
+    /* justify-content: space-around; 젤 처음/젤 마지막 외에는 좌우 다 미세하게 공간생김 */
+    /* align-items: center; 반대축에서 아이템 배치 */
+    /* align-content: center; 위에랑 다른건... 이거 약간... 상대적 정렬 */
+
+
+
+}
+
+.item {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.item1 {
+    background-color: #ef9a9a;
+    /* flex-grow: 1; 기본0, 1로 하면 브라우저 너비에 따라 배로 늘어남*/
+    /* flex-shrink: 1; 기본0, 1로 하면 브라우저 너비에 따라 배로 줄어듦*/
+    /* flex-basis: auto; 기본auto, 30%, 60% 등으로 개별 너비설정도 가능 */
+    /* align-self: center; 개별, 요 하나만 센터 등... 배열설정도 가능! */
+
+
+    /* order : 3 컨텐츠 순서 바꾸는것도 가능하지만 실무에서는 잘 사용x*/
+
+}
+
+.item2 {
+    background: #ce93d8;
+    
+}
+
+.item3 {
+    background: #90caf9;
+}
